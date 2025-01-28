@@ -17,28 +17,38 @@ export default function Task({
 
   const deleteTask = (index) => {
     setTasks((tasks) => {
-      const updatedTasks = [...tasks] 
-      updatedTasks.splice(index, 1) 
-      return updatedTasks 
+      const updatedTasks = [...tasks]
+      updatedTasks.splice(index, 1)
+      return updatedTasks
     })
   }
 
   return (
     <>
-      <li className={`tasks-list--li ${completed ? 'through' : ''}`}>
-        {title}
-        <input
-          type="checkbox"
-          onChange={handleChangeCheck}
-          className="checkbox"
-        />
+      <div className="deadline">{deadline}</div>
+      <li className="tasks-list--li">
+        <label className="label-check">
+          <div className="info">
+            <strong className={completed ? 'through' : ''}>{title}</strong>
+            <span className={`desc ${completed ? 'through' : ''}`}>
+              {description}
+            </span>
+          </div>
+          <input
+            type="checkbox"
+            onChange={handleChangeCheck}
+            className="checkbox"
+          />
+          <span className="span-check"></span>
+        </label>
         <img
           src={deleteImg}
           className="tasks-list--li--img"
           alt="button for delete task"
-          onClick={(index) => deleteTask(index)}
+          onClick={() => deleteTask(index)}
         />
       </li>
+
       {last || <hr />}
     </>
   )

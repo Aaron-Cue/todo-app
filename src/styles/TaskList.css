@@ -1,19 +1,17 @@
 .tasks-list {
-  border: 1px solid #ccc;
   width: 100%;
   margin-top: 30px;
 }
 
 .tasks-list--ul {
   list-style-type: none;
-  padding: 2px 20px 2px 35px;
+  padding: 0 16px;
   margin: 0;
 }
 
 .tasks-list--li {
   text-align: left;
-  padding: 10px 0;
-  margin: 16px 0;
+  margin: 8px 0 24px 0;
   display: flex;
   padding-left: 5px;
   justify-content: space-between;
@@ -27,19 +25,34 @@
   padding-left: 20px;
 }
 
-.checkbox {
-  width: auto;
-  position: absolute;
-  left: -32px;
-  top: 15px;
-  transform: translateX(50%);
-  
-}
 
 hr {
   opacity: 0.45;
+  margin: 0;
 }
 
 .through {
   text-decoration: line-through;
+  color: rgb(175, 175, 175);
+}
+
+strong {
+  font-weight: 500;
+  display: block;
+}
+
+.info {
+  line-height: 20px;
+}
+
+.desc {
+  font-size: 14px;
+  color: rgb(175, 175, 175)
+}
+
+.deadline {
+  margin-top: 6px;
+  font-size: 14px;
+  color: rgb(247, 95, 40);
+  text-decoration: underline;
 }

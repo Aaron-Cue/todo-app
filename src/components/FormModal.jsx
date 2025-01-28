@@ -17,14 +17,18 @@ export default function FormModal({ handleModal, setTasks }) {
     setDeadline(newValue)
   }
 
-  console.log(title, description, deadline)
-
   const handleAddTask = () => {
-    handleModal()
+    
+    if (!title || !deadline) { 
+      alert('Title and deadline are required')
+      return
+    }
 
     const newTask = { title, description, deadline }
-
     setTasks(prevTasks => [...prevTasks, newTask])
+    
+    handleModal()
+
   }
 
   return (
@@ -36,6 +40,7 @@ export default function FormModal({ handleModal, setTasks }) {
         <label>
           Title
           <input
+            required
             type="text"
             name="title"
             onChange={(e) => handleChangeTitle(e.target.value)}
@@ -52,6 +57,7 @@ export default function FormModal({ handleModal, setTasks }) {
         <label>
           Deadline
           <input
+            required
             type="date"
             name="deadline"
             onChange={(e) => handleChangeDeadline(e.target.value)}

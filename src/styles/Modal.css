@@ -30,7 +30,6 @@ form {
   z-index: 10;
 }
 
-
 label {
   font-size: 18px;
   font-weight: 500;
@@ -61,7 +60,8 @@ input:focus {
   gap: 16px;
 }
 
-.btn-cancel, button[type='submit'] {
+.btn-cancel,
+button[type='submit'] {
   width: 120px;
 }
 
@@ -69,4 +69,49 @@ input:focus {
   background-color: #e74c3c;
 }
 
+.checkbox {
+  display: none;
+}
+
+.label-check {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  margin: 0;
+  cursor: pointer;
+}
+
+.label-check::before {
+  content: '';
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #4a90e2;
+  border-radius: 50%; 
+  background-color: transparent;
+  margin-right: 8px;
+  /* transition: all 0.3s; */
+}
+
+.span-check::after {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  width: 8px;
+  height: 4px; 
+  background-color: transparent;
+  border: 3px solid #ddd;
+  border-width: 0 0 3px 3px;
+  box-sizing: content-box;
+  transform: rotate(-45deg);
+  left: 11px;
+  top: 9px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.checkbox:checked ~ .span-check::after {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
 
