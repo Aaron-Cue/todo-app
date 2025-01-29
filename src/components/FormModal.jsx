@@ -19,8 +19,8 @@ export default function FormModal({ handleModal, setTasks }) {
 
   const handleAddTask = () => {
     
-    if (!title || !deadline) { 
-      alert('Title and deadline are required')
+    if (!title || !deadline || !description) {   
+      alert('all fields are required')
       return
     }
 
@@ -50,6 +50,7 @@ export default function FormModal({ handleModal, setTasks }) {
           Description
           <input
             type="text"
+            required
             name="description"
             onChange={(e) => handleChangeDesc(e.target.value)}
           />

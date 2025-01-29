@@ -24,7 +24,7 @@ form {
   margin: 0 auto;
   padding: 20px;
   border-radius: 8px;
-  background-color: #707070;
+  background: linear-gradient(180deg, #909090 0%, #505050 100%);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   color: black;
   z-index: 10;
@@ -63,10 +63,16 @@ input:focus {
 .btn-cancel,
 button[type='submit'] {
   width: 120px;
+  color: black;
+  border: none;
+  box-shadow: 3px 2px 4px rgba(0, 0, 0, .2);
 }
 
+
+
 .btn-cancel {
-  background-color: #e74c3c;
+  background: linear-gradient(40deg, rgb(201, 23, 23) 10%, rgb(190, 82, 20) 100%);
+
 }
 
 .checkbox {
@@ -78,7 +84,9 @@ button[type='submit'] {
   gap: 3px;
   align-items: center;
   margin: 0;
+  margin-left: 16px;
   cursor: pointer;
+  position: relative;
 }
 
 .label-check::before {
@@ -104,8 +112,8 @@ button[type='submit'] {
   border-width: 0 0 3px 3px;
   box-sizing: content-box;
   transform: rotate(-45deg);
-  left: 11px;
-  top: 9px;
+  left: 6px;
+  top: 16px;
   opacity: 0;
   transition: opacity 0.3s;
 }
@@ -115,3 +123,10 @@ button[type='submit'] {
   transition: opacity 0.3s;
 }
 
+@media (max-width: 550px) {
+  form {
+    width: clamp(350px, 60%, 800px);
+    padding: 26px;
+    margin: 0;
+  }
+}

@@ -12,10 +12,10 @@ function App() {
   }
 
   return (
-    <>
+    <div className='container'>
       <Header handleModal={handleModal} />
       <TaskList viewModal={viewModal} handleModal={handleModal} />
-    </>
+    </div>
   )
 }
 
