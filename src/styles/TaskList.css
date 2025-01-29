@@ -31,8 +31,10 @@
 
 
 hr {
-  opacity: 0.45;
   margin: 0;
+  height: 2px;
+  border: none;
+  background-color: rgb(82, 120, 223, .7);
 }
 
 .through {

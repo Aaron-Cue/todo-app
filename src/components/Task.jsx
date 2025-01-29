@@ -39,7 +39,9 @@ export default function Task({
             onChange={handleChangeCheck}
             className="checkbox"
           />
-          <span className="span-check"></span>
+          <span className="circle-check">
+            <span className="span-check"></span>
+          </span>
         </label>
         <img
           src={deleteImg}

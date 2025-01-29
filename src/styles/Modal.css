@@ -81,15 +81,19 @@ button[type='submit'] {
 
 .label-check {
   display: flex;
+  flex-direction: row-reverse;
   gap: 3px;
   align-items: center;
   margin: 0;
   margin-left: 16px;
   cursor: pointer;
+}
+
+.circle-check {
   position: relative;
 }
 
-.label-check::before {
+.circle-check::before {
   content: '';
   display: inline-block;
   width: 22px;
@@ -113,12 +117,12 @@ button[type='submit'] {
   box-sizing: content-box;
   transform: rotate(-45deg);
   left: 6px;
-  top: 16px;
+  top: 7px;
   opacity: 0;
   transition: opacity 0.3s;
 }
 
-.checkbox:checked ~ .span-check::after {
+.checkbox:checked + .circle-check .span-check::after {
   opacity: 1;
   transition: opacity 0.3s;
 }
