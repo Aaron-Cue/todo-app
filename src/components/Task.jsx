@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import deleteImg from '../assets/delete.svg'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 
 export default function Task({
   title,
@@ -9,7 +10,7 @@ export default function Task({
   setTasks,
   index
 }) {
-  const [completed, setCompleted] = useState(false)
+  const [completed, setCompleted] = useLocalStorage('completed', false)
 
   const handleChangeCheck = () => {
     setCompleted(!completed)
@@ -36,6 +37,7 @@ export default function Task({
           </div>
           <input
             type="checkbox"
+            checked={completed}
             onChange={handleChangeCheck}
             className="checkbox"
           />

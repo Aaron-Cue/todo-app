@@ -1,12 +1,13 @@
 import Task from './Task'
 import '../styles/TaskList.css'
-import { useState } from 'react'
 import Modal from './Modal'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 
 export default function TaskList({ viewModal, handleModal }) {
-  const [tasks, setTasks] = useState([])
 
-  return (
+  const [tasks, setTasks] = useLocalStorage('tasks', [])
+
+  return ( 
     <>
       {viewModal && <Modal handleModal={handleModal} setTasks={setTasks} />}
       <div className="tasks-list">
