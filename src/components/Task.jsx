@@ -10,7 +10,10 @@ export default function Task({
   setTasks,
   index
 }) {
-  const [completed, setCompleted] = useLocalStorage('completed', false)
+  const [completed, setCompleted] = useLocalStorage(
+    `task-${index}-completed`,
+    false
+  ) 
 
   const handleChangeCheck = () => {
     setCompleted(!completed)
