@@ -24,9 +24,9 @@ form {
   margin: 0 auto;
   padding: 20px;
   border-radius: 8px;
-  background: linear-gradient(180deg, #909090 0%, #505050 100%);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  color: black;
+  background: linear-gradient(180deg, rgba(13, 66, 240, 0.4) 0%, rgba(0, 0, 0, 0.55) 100%);
+  box-shadow: 0 3px 16px rgba(0, 0, 0, 0.4);
+  color: rgb(240, 240, 240);
   z-index: 10;
 }
 
@@ -39,14 +39,16 @@ label {
 input {
   width: 100%;
   padding: 10px;
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 500;
   outline: none;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   box-sizing: border-box;
-  background-color: rgb(179, 179, 179);
+  background-color: rgba(51, 104, 173, 0.25);
   margin: 5px;
-  color: rgba(10, 10, 10, 1);
+  font-family: system-ui, sans-serif;
+  color: rgb(225, 225, 225);
 }
 
 input:focus {
@@ -68,10 +70,12 @@ button[type='submit'] {
   box-shadow: 3px 2px 4px rgba(0, 0, 0, .2);
 }
 
-
+button[type='submit'] {
+  background: linear-gradient(45deg, #3a56d4 0%, rgb(33, 169, 211) 100%);
+}
 
 .btn-cancel {
-  background: linear-gradient(40deg, rgb(201, 23, 23) 10%, rgb(190, 82, 20) 100%);
+  background: linear-gradient(40deg, rgb(192, 37, 26) 10%, rgb(196, 80, 27) 100%);
 
 }
 

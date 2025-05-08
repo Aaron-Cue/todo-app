@@ -2,8 +2,6 @@ import { useRef } from "react"
 
 export default function FormModal({ handleModal, setTasks }) {
 
-  console.log('re-render')
-
   const titleRef = useRef()
   const descriptionRef = useRef()
   const deadlineRef = useRef()

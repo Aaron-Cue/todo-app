@@ -6,7 +6,6 @@ import { useLocalStorage } from '../hooks/useLocalStorage'
 export default function TaskList({ viewModal, handleModal }) {
 
   const [tasks, setTasks] = useLocalStorage('tasks', [])
-
   return ( 
     <>
       {viewModal && <Modal handleModal={handleModal} setTasks={setTasks} />}
