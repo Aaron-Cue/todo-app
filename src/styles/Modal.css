@@ -36,7 +36,7 @@ label {
   margin-bottom: 5px;
 }
 
-input {
+input, select {
   width: 100%;
   padding: 10px;
   font-size: 15px;
@@ -52,11 +52,16 @@ input {
 }
 
 input:focus {
-  border-color: #0056b3;
-  outline: none;
+  outline: 1px solid #ffffff56;
+}
+
+option {
+  background-color: rgb(6, 6, 20);
+  color: rgb(187, 203, 255);
 }
 
 .form-buttons {
+  margin: 8px 0 3px 0;
   display: flex;
   justify-content: center;
   gap: 16px;
@@ -130,6 +135,9 @@ button[type='submit'] {
   opacity: 1;
   transition: opacity 0.3s;
 }
+
+
+
 
 @media (max-width: 550px) {
   form {

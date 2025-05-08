@@ -5,6 +5,7 @@ export default function FormModal({ handleModal, setTasks }) {
   const titleRef = useRef()
   const descriptionRef = useRef()
   const deadlineRef = useRef()
+  const priorityRef = useRef()
 
   const handleSubmit = (e) => {
     e.preventDefault()  
@@ -12,11 +13,13 @@ export default function FormModal({ handleModal, setTasks }) {
     const title = titleRef.current.value
     const description = descriptionRef.current.value
     const deadline = deadlineRef.current.value
+    const priority = priorityRef.current.value
 
     const newTask = {
       title,
       description,
-      deadline
+      deadline,
+      priority
     }
 
     setTasks(prevTasks => [...prevTasks, newTask])
@@ -26,7 +29,7 @@ export default function FormModal({ handleModal, setTasks }) {
 
   return (
     <>
-      <form action="POST" onSubmit={(e) => handleSubmit(e)} >
+      <form action="POST" onSubmit={e => handleSubmit(e)}>
         <h2>
           <i>Add new task</i>
         </h2>
@@ -41,6 +44,14 @@ export default function FormModal({ handleModal, setTasks }) {
         <label>
           Deadline
           <input ref={deadlineRef} required type="date" name="deadline" />
+        </label>
+        <label>
+          Priority
+          <select ref={priorityRef} required name="priority">
+            <option value="L">Low</option>
+            <option value="M">Medium</option>
+            <option value="H">High</option>
+          </select>
         </label>
         <div className="form-buttons">
           <button type="submit">Add</button>
