@@ -1,30 +1,40 @@
 import Task from './Task'
 import '../styles/TaskList.css'
 import Modal from './Modal'
-import { useLocalStorage } from '../hooks/useLocalStorage'
 
-export default function TaskList({ viewModal, handleModal }) {
+export default function TaskList({
+  viewModal,
+  handleModal,
+  tasks,
+  setTasks,
+  priorityCategory
+}) {
 
-  const [tasks, setTasks] = useLocalStorage('tasks', [])
-  console.log(tasks)
+  // filtrar segun prioridad
+  const tasksFiltered = tasks.filter(task => {
+    if (priorityCategory === 'ALL') return true
+    return task.priority === priorityCategory
+  })
 
-  return ( 
+  return (
     <>
       {viewModal && <Modal handleModal={handleModal} setTasks={setTasks} />}
       <div className="tasks-list">
         <ul className="tasks-list--ul">
-          {tasks.map(({ title, description, deadline, priority }, i) => (
-            <Task
-              key={title}
-              index={i}
-              title={title}
-              description={description}
-              deadline={deadline}
-              priority={priority}
-              last={i === tasks.length - 1}
-              setTasks={setTasks}
-            />
-          ))}
+          {tasksFiltered.map(
+            ({ title, description, deadline, priority }, i) => (
+              <Task
+                key={i}
+                index={i}
+                title={title}
+                description={description}
+                deadline={deadline}
+                priority={priority}
+                last={i === tasks.length - 1}
+                setTasks={setTasks}
+              />
+            )
+          )}
         </ul>
       </div>
     </>

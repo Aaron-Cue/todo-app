@@ -16,6 +16,7 @@ export default function Task({
     `task-${index}-completed`,
     false
   ) 
+  
 
   const handleChangeCheck = () => {
     setCompleted(!completed)
