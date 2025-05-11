@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import deleteImg from '../assets/delete.svg'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 
@@ -11,13 +10,11 @@ export default function Task({
   setTasks,
   id
 }) {
-  console.log(id)
 
   const [completed, setCompleted] = useLocalStorage(
     `task-${id}-completed`,
     false
   ) 
-  
 
   const handleChangeCheck = () => {
     setCompleted(!completed)
@@ -26,10 +23,6 @@ export default function Task({
   const deleteTask = id => {
     setTasks(tasks => tasks.filter(task => task.id !== id))
   }
-
-  
-    setTasks(tasks => tasks.filter(task => task.id !== id))
-  
 
   return (
     <article>
