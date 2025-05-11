@@ -22,10 +22,10 @@ export default function TaskList({
       <div className="tasks-list">
         <ul className="tasks-list--ul">
           {tasksFiltered.map(
-            ({ title, description, deadline, priority }, i) => (
+            ({ title, description, deadline, priority, id }, i) => (
               <Task
                 key={i}
-                index={i}
+                id={id}
                 title={title}
                 description={description}
                 deadline={deadline}

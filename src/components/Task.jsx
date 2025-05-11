@@ -9,11 +9,12 @@ export default function Task({
   priority,
   last,
   setTasks,
-  index
+  id
 }) {
+  console.log(id)
 
   const [completed, setCompleted] = useLocalStorage(
-    `task-${index}-completed`,
+    `task-${id}-completed`,
     false
   ) 
   
@@ -22,18 +23,18 @@ export default function Task({
     setCompleted(!completed)
   }
 
-  const deleteTask = (index) => {
-    setTasks((tasks) => {
-      const updatedTasks = [...tasks]
-      updatedTasks.splice(index, 1)
-      return updatedTasks
-    })
+  const deleteTask = id => {
+    setTasks(tasks => tasks.filter(task => task.id !== id))
   }
+
+  
+    setTasks(tasks => tasks.filter(task => task.id !== id))
+  
 
   return (
     <article>
       <div className="deadline">{deadline}</div>
-      <div className='tasks-list--li--container'>
+      <div className="tasks-list--li--container">
         <div className={`priority ${priority}-color`}>{priority}</div>
         <li className="tasks-list--li">
           <label className="label-check">
@@ -57,7 +58,7 @@ export default function Task({
             src={deleteImg}
             className="tasks-list--li--img"
             alt="button for delete task"
-            onClick={() => deleteTask(index)}
+            onClick={() => deleteTask(id)}
           />
         </li>
       </div>

@@ -16,6 +16,7 @@ export default function FormModal({ handleModal, setTasks }) {
     const priority = priorityRef.current.value
 
     const newTask = {
+      id: crypto.randomUUID(),
       title,
       description,
       deadline,
