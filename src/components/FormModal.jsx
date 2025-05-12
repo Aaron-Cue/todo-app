@@ -1,7 +1,7 @@
 import { useContext, useRef } from "react"
 import { TaskContext } from '../context/taskContext'
 
-export default function FormModal({ handleModal }) {
+export default function FormModal({ handleModal, edit, id }) {
   
   const { tasks, dispatch } = useContext(TaskContext)
 
@@ -27,11 +27,38 @@ export default function FormModal({ handleModal }) {
     handleModal()
   }
 
+  const handleEdit = (e, id) => {
+    e.preventDefault()
+
+    dispatch({
+      type: 'EDIT',
+      payload: {
+        id: id,
+        title: titleRef.current.value,
+        description: descriptionRef.current.value,
+        deadline: deadlineRef.current.value,
+        priority: priorityRef.current.value
+      }
+    })
+
+    handleModal()
+  }
+
   return (
     <>
-      <form action="POST" onSubmit={e => handleSubmit(e)}>
+      <form
+        action="POST"
+        onSubmit={e => {
+          e.preventDefault()
+          if (edit) {
+            handleEdit(e, id)
+          } else {
+            handleSubmit(e)
+          }
+        }}
+      >
         <h2>
-          <i>Add new task</i>
+          <i>{edit ? 'Edit task' : 'Add new task'}</i>
         </h2>
         <label>
           Title
@@ -54,7 +81,7 @@ export default function FormModal({ handleModal }) {
           </select>
         </label>
         <div className="form-buttons">
-          <button type="submit">Add</button>
+          <button type="submit">{edit ? 'Edit' : 'Add'}</button>
           <button className="btn-cancel" onClick={handleModal}>
             Cancel
           </button>
