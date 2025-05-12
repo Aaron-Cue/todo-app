@@ -1,5 +1,7 @@
+import { useContext } from 'react'
 import deleteImg from '../assets/delete.svg'
 import { useLocalStorage } from '../hooks/useLocalStorage'
+import { TaskContext } from '../context/taskContext'
 
 export default function Task({
   title,
@@ -7,21 +9,26 @@ export default function Task({
   deadline,
   priority,
   last,
-  setTasks,
   id
 }) {
+  const { tasks, dispatch } = useContext(TaskContext)
 
-  const [completed, setCompleted] = useLocalStorage(
+  const [completed, dispatchCompleted] = useLocalStorage(
     `task-${id}-completed`,
+    (state, action) => {
+      if (action.type === 'TOGGLE') {
+        return !state
+      }
+      else { throw new Error("unknow action type") }
+      
+    },
     false
-  ) 
+  )
 
   const handleChangeCheck = () => {
-    setCompleted(!completed)
-  }
-
-  const deleteTask = id => {
-    setTasks(tasks => tasks.filter(task => task.id !== id))
+    dispatchCompleted({
+      type: 'TOGGLE'
+    })
   }
 
   return (
@@ -51,7 +58,14 @@ export default function Task({
             src={deleteImg}
             className="tasks-list--li--img"
             alt="button for delete task"
-            onClick={() => deleteTask(id)}
+            onClick={() =>
+              dispatch({
+                type: 'DELETE',
+                payload: {
+                  id: id
+                }
+              })
+            }
           />
         </li>
       </div>

@@ -1,14 +1,16 @@
 import Task from './Task'
 import '../styles/TaskList.css'
 import Modal from './Modal'
+import { useContext } from 'react'
+import { TaskContext } from '../context/taskContext'
 
 export default function TaskList({
   viewModal,
   handleModal,
-  tasks,
-  setTasks,
   priorityCategory
 }) {
+
+  const { tasks } = useContext(TaskContext)
 
   // filtrar segun prioridad
   const tasksFiltered = tasks.filter(task => {
@@ -18,7 +20,7 @@ export default function TaskList({
 
   return (
     <>
-      {viewModal && <Modal handleModal={handleModal} setTasks={setTasks} />}
+      {viewModal && <Modal handleModal={handleModal} />}
       <div className="tasks-list">
         <ul className="tasks-list--ul">
           {tasksFiltered.map(
@@ -31,7 +33,6 @@ export default function TaskList({
                 deadline={deadline}
                 priority={priority}
                 last={i === tasks.length - 1}
-                setTasks={setTasks}
               />
             )
           )}

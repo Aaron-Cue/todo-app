@@ -1,11 +1,11 @@
 import FormModal from './FormModal'
 import '../styles/Modal.css'
 
-export default function Modal({ handleModal, setTasks }) {
+export default function Modal({ handleModal }) {
   return (
     <>
       <div className="modal">
-        <FormModal handleModal={handleModal} setTasks={setTasks} />
+        <FormModal handleModal={handleModal} />
       </div>
     </>
   )

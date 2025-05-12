@@ -1,6 +1,9 @@
-import { useRef } from "react"
+import { useContext, useRef } from "react"
+import { TaskContext } from '../context/taskContext'
 
-export default function FormModal({ handleModal, setTasks }) {
+export default function FormModal({ handleModal }) {
+  
+  const { tasks, dispatch } = useContext(TaskContext)
 
   const titleRef = useRef()
   const descriptionRef = useRef()
@@ -10,20 +13,16 @@ export default function FormModal({ handleModal, setTasks }) {
   const handleSubmit = (e) => {
     e.preventDefault()  
 
-    const title = titleRef.current.value
-    const description = descriptionRef.current.value
-    const deadline = deadlineRef.current.value
-    const priority = priorityRef.current.value
-
-    const newTask = {
-      id: crypto.randomUUID(),
-      title,
-      description,
-      deadline,
-      priority
-    }
-
-    setTasks(prevTasks => [...prevTasks, newTask])
+    dispatch({
+      type: 'ADD',
+      payload: {
+        id: crypto.randomUUID(),
+        title: titleRef.current.value,
+        description: descriptionRef.current.value,
+        deadline: deadlineRef.current.value,
+        priority: priorityRef.current.value
+      }
+     })
     
     handleModal()
   }
